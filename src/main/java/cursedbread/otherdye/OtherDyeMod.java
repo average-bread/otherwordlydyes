@@ -3,11 +3,13 @@ package cursedbread.otherdye;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.render.block.model.BlockModelRenderBlocks;
 import net.minecraft.client.sound.block.BlockSound;
+import net.minecraft.client.sound.block.BlockSounds;
 import net.minecraft.core.block.BlockMushroom;
 import net.minecraft.core.block.BlockWool;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemDye;
+import net.minecraft.core.item.tag.ItemTags;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.BlockBuilder;
@@ -37,7 +39,7 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 
 	public static BlockBuilder customwoolBlocks = new BlockBuilder(MOD_ID)
 		.setBlockModel(new BlockModelRenderBlocks(0))
-		.setBlockSound(new BlockSound("step.wool", "step.wool", 1.0f, 1.0f));
+		.setBlockSound(BlockSounds.CLOTH);
 
 
 	public static int blockId;
@@ -78,12 +80,10 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
       glowWool = customwoolBlocks
 		  .setTextures("glowing_wool.png")
 		  .setLuminance(13)
-		  .setFlammability(60, 60)
+		  .setFlammability(30,60)
 		  .build(new Block("glowWool", startingBlockId++, Material.cloth));
 
-	  glowDye = ItemHelper.createItem(MOD_ID, new Item("glowingDye", itemId++), "items/glowing_dye.png");
-
-
+	  glowDye = ItemHelper.createItem(MOD_ID, new Item("glowingDye", itemId++), "glowing_dye.png").withTags(ItemTags.renderFullbright);
 	}
 
 	@Override
