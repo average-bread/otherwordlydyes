@@ -6,9 +6,12 @@ import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.core.block.BlockMushroom;
 import net.minecraft.core.block.BlockWool;
 import net.minecraft.core.block.material.Material;
+import net.minecraft.core.item.Item;
+import net.minecraft.core.item.ItemDye;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.BlockBuilder;
+import turniplabs.halplibe.helper.ItemHelper;
 import turniplabs.halplibe.util.ConfigHandler;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import net.minecraft.core.block.Block;
@@ -43,6 +46,7 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 
 	public static Block glowShroom;
 	public static Block glowWool;
+	public static Item glowDye;
 
 	static {
 		Properties prop = new Properties();
@@ -76,6 +80,8 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 		  .setLuminance(13)
 		  .setFlammability(60, 60)
 		  .build(new Block("glowWool", startingBlockId++, Material.cloth));
+
+	  glowDye = ItemHelper.createItem(MOD_ID, new ItemDye("glowingdye", itemId++));
 
 
 	}
