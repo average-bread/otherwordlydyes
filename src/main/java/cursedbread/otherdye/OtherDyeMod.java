@@ -81,7 +81,7 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 		  .setFlammability(60, 60)
 		  .build(new Block("glowWool", startingBlockId++, Material.cloth));
 
-	  glowDye = ItemHelper.createItem(MOD_ID, new ItemDye("glowingdye", itemId++));
+	  glowDye = ItemHelper.createItem(MOD_ID, new Item("glowingDye", itemId++), "items/glowing_dye.png");
 
 
 	}
