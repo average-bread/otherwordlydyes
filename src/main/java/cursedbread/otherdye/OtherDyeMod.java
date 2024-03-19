@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.render.block.model.BlockModelRenderBlocks;
 import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.core.block.BlockMushroom;
+import net.minecraft.core.block.BlockWool;
 import net.minecraft.core.block.material.Material;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,12 +32,17 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 		.setBlockModel(new BlockModelRenderBlocks(1))
 		.setBlockSound(new BlockSound("step.grass", "step.grass", 1.0f, 1.0f));
 
+	public static BlockBuilder customwoolBlocks = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelRenderBlocks(0))
+		.setBlockSound(new BlockSound("step.wool", "step.wool", 1.0f, 1.0f));
+
 
 	public static int blockId;
 
 	public static int itemId;
 
 	public static Block glowShroom;
+	public static Block glowWool;
 
 	static {
 		Properties prop = new Properties();
@@ -64,6 +70,11 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 		  .setLuminance(10)
 		  .build(new BlockMushroom("glowShroom", startingBlockId++));
 
+
+      glowWool = customwoolBlocks
+		  .setTextures("glowing_wool.png")
+		  .setLuminance(13)
+		  .build(new BlockWool("glowWool", startingBlockId++));
 
 
 	}
