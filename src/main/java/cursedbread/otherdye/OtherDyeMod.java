@@ -74,7 +74,8 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
       glowWool = customwoolBlocks
 		  .setTextures("glowing_wool.png")
 		  .setLuminance(13)
-		  .build(new BlockWool("glowWool", startingBlockId++));
+		  .setFlammability(60, 60)
+		  .build(new Block("glowWool", startingBlockId++, Material.cloth));
 
 
 	}
