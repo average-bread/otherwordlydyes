@@ -23,10 +23,8 @@
     ],
 		"beforeGameStart": [
 			"cursedbread.otherdye.OtherDyeMod"
-		],
-		"recipesReady": [
-			"cursedbread.otherdye.OtherDyeCrafts"
 		]
+
 	},
 
   "mixins": [

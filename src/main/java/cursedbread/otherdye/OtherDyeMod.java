@@ -1,11 +1,16 @@
 package cursedbread.otherdye;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.render.block.model.BlockModelRenderBlocks;
+import net.minecraft.client.sound.block.BlockSound;
+import net.minecraft.core.block.BlockMushroom;
+import net.minecraft.core.block.material.Material;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.util.ConfigHandler;
 import turniplabs.halplibe.util.GameStartEntrypoint;
+import net.minecraft.core.block.Block;
 import java.util.Properties;
 
 
@@ -22,10 +27,16 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 		.setHardness(5f); // Sets the hardness which affects the time to mine the blocks
 	//too scared that everything will break, better keep this pieve of code as it is ^
 
+	public static BlockBuilder crossedBlock = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelRenderBlocks(1))
+		.setBlockSound(new BlockSound("step.grass", "step.grass", 1.0f, 1.0f));
+
 
 	public static int blockId;
 
 	public static int itemId;
+
+	public static Block glowShroom;
 
 	static {
 		Properties prop = new Properties();
@@ -48,7 +59,10 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 	public void beforeGameStart() {
 		int startingBlockId = blockId;
 
-
+      glowShroom = crossedBlock
+		  .setTextures("glowing_shroom.png")
+		  .setLuminance(10)
+		  .build(new BlockMushroom("glowShroom", startingBlockId++));
 
 
 
