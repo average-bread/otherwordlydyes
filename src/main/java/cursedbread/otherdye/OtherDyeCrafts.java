@@ -27,5 +27,9 @@ public class OtherDyeCrafts implements RecipeEntrypoint {
 			.addInput(Item.bone)
 			.create("glowMealCraft", new ItemStack(OtherDyeMod.glowMeal, 3));
 
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(OtherDyeMod.glowShroom)
+			.create("glowDyeCraft", new ItemStack(OtherDyeMod.glowDye, 1));
+
 	}
 }
