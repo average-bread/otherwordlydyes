@@ -21,15 +21,22 @@ public class OtherDyeCrafts implements RecipeEntrypoint {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	@Override
 	public void onRecipesReady() {
+
+		Registries.ITEM_GROUPS.getItem("minecraft:wools").add(OtherDyeMod.glowWool.getDefaultStack());
 		// Shapeless Recipe examples
 		RecipeBuilder.Shapeless(MOD_ID)
 			.addInput(Item.dustGlowstone)
 			.addInput(Item.bone)
-			.create("glowMealCraft", new ItemStack(OtherDyeMod.glowMeal, 3));
+			.create("glowMealCraft", new ItemStack(OtherDyeMod.glowMeal, 4));
 
 		RecipeBuilder.Shapeless(MOD_ID)
 			.addInput(OtherDyeMod.glowShroom)
 			.create("glowDyeCraft", new ItemStack(OtherDyeMod.glowDye, 1));
+
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(OtherDyeMod.glowDye)
+			.addInput("minecraft:wools")
+			.create("glowDyeCraft", new ItemStack(OtherDyeMod.glowWool, 1));
 
 	}
 }

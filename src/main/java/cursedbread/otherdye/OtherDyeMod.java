@@ -7,6 +7,8 @@ import net.minecraft.client.sound.block.BlockSounds;
 import net.minecraft.core.block.BlockMushroom;
 import net.minecraft.core.block.BlockWool;
 import net.minecraft.core.block.material.Material;
+import net.minecraft.core.block.tag.BlockTags;
+import net.minecraft.core.data.tag.Tag;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemDye;
 import net.minecraft.core.item.tag.ItemTags;
@@ -18,6 +20,8 @@ import turniplabs.halplibe.util.ConfigHandler;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import net.minecraft.core.block.Block;
 import java.util.Properties;
+
+import static net.minecraft.core.item.Item.cloth;
 
 
 public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
@@ -75,7 +79,7 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
       glowShroom = crossedBlock
 		  .setTextures("glowing_shroom.png")
 		  .setLuminance(10)
-		  .build(new BlockMushroom("glowShroom", startingBlockId++));
+		  .build(new BlockMushroom("glowShroom", startingBlockId++)).withTags(BlockTags.PLANTABLE_IN_JAR);
 
 
       glowWool = customwoolBlocks
