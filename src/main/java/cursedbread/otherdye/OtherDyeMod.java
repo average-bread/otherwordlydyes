@@ -49,6 +49,7 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 	public static Block glowShroom;
 	public static Block glowWool;
 	public static Item glowDye;
+	public static Item glowMeal;
 
 	static {
 		Properties prop = new Properties();
@@ -82,6 +83,8 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 		  .setLuminance(13)
 		  .setFlammability(30,60)
 		  .build(new Block("glowWool", startingBlockId++, Material.cloth));
+
+	  glowMeal = ItemHelper.createItem(MOD_ID, new GlowShroomCreate("glowMeal", itemId++), "glow_meal.png").withTags(ItemTags.renderFullbright);
 
 	  glowDye = ItemHelper.createItem(MOD_ID, new Item("glowingDye", itemId++), "glowing_dye.png").withTags(ItemTags.renderFullbright);
 	}

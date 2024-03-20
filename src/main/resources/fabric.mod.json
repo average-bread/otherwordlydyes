@@ -23,8 +23,10 @@
     ],
 		"beforeGameStart": [
 			"cursedbread.otherdye.OtherDyeMod"
+		],
+		"recipesReady": [
+			"cursedbread.otherdye.OtherDyeCrafts"
 		]
-
 	},
 
   "mixins": [
@@ -34,8 +36,7 @@
 
 	"depends": {
 		"minecraft": "~7.1-beta.1",
-		"fabricloader": ">=0.13.3",
-    "terrainapi": ">=1.4.3-7.1"
+		"fabricloader": ">=0.13.3"
 	},
 	"suggests": {
 	}
