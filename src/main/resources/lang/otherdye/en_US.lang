@@ -5,6 +5,14 @@ tile.otherdye.glowWool.name=Glowing Wool
 tile.otherdye.glowWool.desc=Sheep's wool, dyed glow
 tile.otherdye.glowPlanks.name=Glowing Planks
 tile.otherdye.glowPlanks.desc=Wooden planks, stained glow
+tile.otherdye.glowPlanksFence.name=Glowing Planks Fence
+tile.otherdye.glowPlanksFence.desc=A wooden fence, stained glow
+tile.otherdye.glowPlanksGate.name=Glowing Planks Gate
+tile.otherdye.glowPlanksGate.desc=A wooden gate, stained glow
+tile.otherdye.slab.glowPlanks.name=Glowing Planks Slab
+tile.otherdye.slab.glowPlanks.desc=A slab of wooden planks, stained glow
+tile.otherdye.stairs.glowPlanks.name=Glowing Planks Stairs
+tile.otherdye.stairs.glowPlanks.desc=Wooden steps, stained glow
 
 item.otherdye.glowingDye.name=Glowing Dye
 item.otherdye.glowingDye.desc=Can be used to colour certain blocks glowing

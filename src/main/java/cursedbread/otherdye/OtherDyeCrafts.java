@@ -23,6 +23,7 @@ public class OtherDyeCrafts implements RecipeEntrypoint {
 	public void onRecipesReady() {
 
 		Registries.ITEM_GROUPS.getItem("minecraft:wools").add(OtherDyeMod.glowWool.getDefaultStack());
+		Registries.ITEM_GROUPS.getItem("minecraft:planks").add(OtherDyeMod.glowPlanks.getDefaultStack());
 		// Shapeless Recipe examples
 		RecipeBuilder.Shapeless(MOD_ID)
 			.addInput(Item.dustGlowstone)
@@ -37,6 +38,34 @@ public class OtherDyeCrafts implements RecipeEntrypoint {
 			.addInput(OtherDyeMod.glowDye)
 			.addInput("minecraft:wools")
 			.create("glowDyeCraft", new ItemStack(OtherDyeMod.glowWool, 1));
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("HHH", "HDH", "HHH")
+			.addInput('H', "minecraft:planks")
+			.addInput('D', OtherDyeMod.glowDye)
+			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanks, 8));
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("DHD", "DHD")
+			.addInput('H', Item.stick)
+			.addInput('D', OtherDyeMod.glowPlanks)
+			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksFence, 6));
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("HDH", "HDH")
+			.addInput('H', Item.stick)
+			.addInput('D', OtherDyeMod.glowPlanks)
+			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksGate, 3));
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("DDD")
+			.addInput('D', OtherDyeMod.glowPlanks)
+			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksSlab, 6));
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("D  ", "DD ", "DDD")
+			.addInput('D', OtherDyeMod.glowPlanks)
+			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksStairs, 6));
 
 	}
 }

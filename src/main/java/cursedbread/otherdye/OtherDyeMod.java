@@ -4,13 +4,13 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.render.block.model.BlockModelRenderBlocks;
 import net.minecraft.client.sound.block.BlockSound;
 import net.minecraft.client.sound.block.BlockSounds;
-import net.minecraft.core.block.BlockMushroom;
-import net.minecraft.core.block.BlockWool;
+import net.minecraft.core.block.*;
 import net.minecraft.core.block.material.Material;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.data.tag.Tag;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.item.ItemDye;
+import net.minecraft.core.item.block.ItemBlockSlab;
 import net.minecraft.core.item.tag.ItemTags;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.helper.ItemHelper;
 import turniplabs.halplibe.util.ConfigHandler;
 import turniplabs.halplibe.util.GameStartEntrypoint;
-import net.minecraft.core.block.Block;
+
 import java.util.Properties;
 
 import static net.minecraft.core.item.Item.cloth;
@@ -41,13 +41,30 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 		.setBlockModel(new BlockModelRenderBlocks(1))
 		.setBlockSound(new BlockSound("step.grass", "step.grass", 1.0f, 1.0f));
 
-	public static BlockBuilder customwoolBlocks = new BlockBuilder(MOD_ID)
+	public static BlockBuilder customWoolBlocks = new BlockBuilder(MOD_ID)
 		.setBlockModel(new BlockModelRenderBlocks(0))
 		.setFlammability(30,60)
 		.setBlockSound(BlockSounds.CLOTH);
 
-	public static BlockBuilder customplanksBlock = new BlockBuilder(MOD_ID)
+	public static BlockBuilder customPlanksBlock = new BlockBuilder(MOD_ID)
 		.setBlockModel(new BlockModelRenderBlocks(0))
+		.setFlammability(5,20)
+		.setBlockSound(BlockSounds.WOOD);
+	public static BlockBuilder customPlanksFenceBlock = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelRenderBlocks(11))
+		.setFlammability(5,20)
+		.setBlockSound(BlockSounds.WOOD);
+	public static BlockBuilder customPlanksGateBlock = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelRenderBlocks(18))
+		.setFlammability(5,20)
+		.setBlockSound(BlockSounds.WOOD);
+	public static BlockBuilder customPlanksSlabBlock = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelRenderBlocks(0))
+		.setFlammability(5,20)
+		.setItemBlock(ItemBlockSlab::new)
+		.setBlockSound(BlockSounds.WOOD);
+	public static BlockBuilder customPlanksStairBlock = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelRenderBlocks(10))
 		.setFlammability(5,20)
 		.setBlockSound(BlockSounds.WOOD);
 
@@ -58,9 +75,16 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 
 	public static Block glowShroom;
 	public static Block glowWool;
+	public static Block glowPlanks;
+	public static Block glowPlanksFence;
+	public static Block glowPlanksGate;
+	public static Block glowPlanksSlab;
+	public static Block glowPlanksStairs;
+	public static Block glowPlanksChest;
+	public static Block glowLamp;
 	public static Item glowDye;
 	public static Item glowMeal;
-	public static Block glowPlanks;
+
 
 	static {
 		Properties prop = new Properties();
@@ -86,18 +110,38 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
       glowShroom = crossedBlock
 		  .setTextures("glowing_shroom.png")
 		  .setLuminance(10)
-		  .build(new BlockMushroom("glowShroom", startingBlockId++)).withTags(BlockTags.PLANTABLE_IN_JAR);
+		  .build(new BlockMushroom("glowShroom", blockId++)).withTags(BlockTags.PLANTABLE_IN_JAR);
 
 
-      glowWool = customwoolBlocks
+      glowWool = customWoolBlocks
 		  .setTextures("glowing_wool.png")
 		  .setLuminance(13)
-		  .build(new Block("glowWool", startingBlockId++, Material.cloth));
+		  .build(new Block("glowWool", blockId++, Material.cloth));
 
-	  glowPlanks = customplanksBlock
+	  glowPlanks = customPlanksBlock
 		  .setTextures("glowing_planks.png")
 		  .setLuminance(13)
-		  .build(new Block("glowPlanks", startingBlockId++, Material.wood));
+		  .build(new Block("glowPlanks", blockId++, Material.wood)).withTags(BlockTags.MINEABLE_BY_AXE, BlockTags.FENCES_CONNECT);
+
+		glowPlanksFence = customPlanksFenceBlock
+			.setTextures("glowing_planks.png")
+			.setLuminance(13)
+			.build(new BlockFence("glowPlanksFence", blockId++)).withTags(BlockTags.MINEABLE_BY_AXE, BlockTags.FENCES_CONNECT);
+
+		glowPlanksGate = customPlanksGateBlock
+			.setTextures("glowing_planks.png")
+			.setLuminance(13)
+			.build(new BlockFenceGate("glowPlanksGate", blockId++)).withTags(BlockTags.MINEABLE_BY_AXE, BlockTags.FENCES_CONNECT);
+
+		glowPlanksSlab = customPlanksSlabBlock
+			.setTextures("glowing_planks.png")
+			.setLuminance(13)
+			.build(new BlockSlab(glowPlanks, blockId++)).withTags(BlockTags.MINEABLE_BY_AXE, BlockTags.FENCES_CONNECT);
+
+		glowPlanksStairs = customPlanksStairBlock
+			.setTextures("glowing_planks.png")
+			.setLuminance(13)
+			.build(new BlockStairs(glowPlanks, blockId++)).withTags(BlockTags.MINEABLE_BY_AXE, BlockTags.FENCES_CONNECT);
 
 	  glowMeal = ItemHelper.createItem(MOD_ID, new GlowShroomCreate("glowMeal", itemId++), "glow_meal.png").withTags(ItemTags.renderFullbright);
 
