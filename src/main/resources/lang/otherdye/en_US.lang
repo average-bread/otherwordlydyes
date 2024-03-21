@@ -3,6 +3,8 @@ tile.otherdye.glowShroom.desc=Light you way through caves with this mushroom!
 
 tile.otherdye.glowWool.name=Glowing Wool
 tile.otherdye.glowWool.desc=Sheep's wool, dyed glow
+tile.otherdye.glowPlanks.name=Glowing Planks
+tile.otherdye.glowPlanks.desc=Wooden planks, stained glow
 
 item.otherdye.glowingDye.name=Glowing Dye
 item.otherdye.glowingDye.desc=Can be used to colour certain blocks glowing

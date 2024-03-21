@@ -43,7 +43,13 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 
 	public static BlockBuilder customwoolBlocks = new BlockBuilder(MOD_ID)
 		.setBlockModel(new BlockModelRenderBlocks(0))
+		.setFlammability(30,60)
 		.setBlockSound(BlockSounds.CLOTH);
+
+	public static BlockBuilder customplanksBlock = new BlockBuilder(MOD_ID)
+		.setBlockModel(new BlockModelRenderBlocks(0))
+		.setFlammability(5,20)
+		.setBlockSound(BlockSounds.WOOD);
 
 
 	public static int blockId;
@@ -54,6 +60,7 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
 	public static Block glowWool;
 	public static Item glowDye;
 	public static Item glowMeal;
+	public static Block glowPlanks;
 
 	static {
 		Properties prop = new Properties();
@@ -85,8 +92,12 @@ public class OtherDyeMod implements ModInitializer, GameStartEntrypoint {
       glowWool = customwoolBlocks
 		  .setTextures("glowing_wool.png")
 		  .setLuminance(13)
-		  .setFlammability(30,60)
 		  .build(new Block("glowWool", startingBlockId++, Material.cloth));
+
+	  glowPlanks = customplanksBlock
+		  .setTextures("glowing_planks.png")
+		  .setLuminance(13)
+		  .build(new Block("glowPlanks", startingBlockId++, Material.wood));
 
 	  glowMeal = ItemHelper.createItem(MOD_ID, new GlowShroomCreate("glowMeal", itemId++), "glow_meal.png").withTags(ItemTags.renderFullbright);
 
