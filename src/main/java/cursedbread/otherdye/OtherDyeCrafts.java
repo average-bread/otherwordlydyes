@@ -24,6 +24,8 @@ public class OtherDyeCrafts implements RecipeEntrypoint {
 
 		Registries.ITEM_GROUPS.getItem("minecraft:wools").add(OtherDyeMod.glowWool.getDefaultStack());
 		Registries.ITEM_GROUPS.getItem("minecraft:planks").add(OtherDyeMod.glowPlanks.getDefaultStack());
+		Registries.ITEM_GROUPS.getItem("minecraft:chests").add(OtherDyeMod.glowPlanksChest.getDefaultStack());
+		Registries.ITEM_GROUPS.getItem("minecraft:lamps").add(OtherDyeMod.glowLampOFF.getDefaultStack());
 		// Shapeless Recipe examples
 		RecipeBuilder.Shapeless(MOD_ID)
 			.addInput(Item.dustGlowstone)
@@ -49,23 +51,38 @@ public class OtherDyeCrafts implements RecipeEntrypoint {
 			.setShape("DHD", "DHD")
 			.addInput('H', Item.stick)
 			.addInput('D', OtherDyeMod.glowPlanks)
-			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksFence, 6));
+			.create("glowPlanksCraftFence", new ItemStack(OtherDyeMod.glowPlanksFence, 6));
 
 		RecipeBuilder.Shaped(MOD_ID)
 			.setShape("HDH", "HDH")
 			.addInput('H', Item.stick)
 			.addInput('D', OtherDyeMod.glowPlanks)
-			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksGate, 3));
+			.create("glowPlanksCraftGate", new ItemStack(OtherDyeMod.glowPlanksGate, 3));
 
 		RecipeBuilder.Shaped(MOD_ID)
 			.setShape("DDD")
 			.addInput('D', OtherDyeMod.glowPlanks)
-			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksSlab, 6));
+			.create("glowPlanksCraftSlab", new ItemStack(OtherDyeMod.glowPlanksSlab, 6));
 
 		RecipeBuilder.Shaped(MOD_ID)
 			.setShape("D  ", "DD ", "DDD")
 			.addInput('D', OtherDyeMod.glowPlanks)
-			.create("glowPlanksCraft", new ItemStack(OtherDyeMod.glowPlanksStairs, 6));
+			.create("glowPlanksCraftStairs", new ItemStack(OtherDyeMod.glowPlanksStairs, 6));
+
+		RecipeBuilder.Shaped(MOD_ID)
+			.setShape("DDD", "D D", "DDD")
+			.addInput('D', OtherDyeMod.glowPlanks)
+			.create("glowPlanksCraftChest", new ItemStack(OtherDyeMod.glowPlanksChest, 1));
+
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(OtherDyeMod.glowDye)
+			.addInput("minecraft:chests")
+			.create("glowPlanksCraftChest", new ItemStack(OtherDyeMod.glowPlanksChest, 1));
+
+		RecipeBuilder.Shapeless(MOD_ID)
+			.addInput(OtherDyeMod.glowDye)
+			.addInput("minecraft:lamps")
+			.create("glowLampCraft", new ItemStack(OtherDyeMod.glowLampOFF, 1));
 
 	}
 }
